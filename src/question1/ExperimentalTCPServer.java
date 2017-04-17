@@ -29,7 +29,6 @@ public class ExperimentalTCPServer implements Runnable
 
     public ExperimentalTCPServer(int port, ExceptionListener el) throws Exception
     {
-
         this.serveur = new ServerSocket(port);
         // pour les tests
         int delai = 3000 + new Random().nextInt(5000);

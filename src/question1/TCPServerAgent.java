@@ -39,7 +39,6 @@ public class TCPServerAgent implements NotificationListener
         } catch (Exception e) {
         }
 
-        registry = java.rmi.registry.LocateRegistry.getRegistry(9999);
         try {
             java.rmi.server.UnicastRemoteObject.unexportObject(registry.lookup("TCPserver"), true);
         } catch (Exception e) {
@@ -66,9 +65,10 @@ public class TCPServerAgent implements NotificationListener
         adapter.start();
     }
 
+    @Override
     public void handleNotification(Notification notification, Object handback)
     {
-        System.out.print(notification.getMessage());
+        //System.out.print(notification.getMessage());
         System.out.println(" number : " + notification.getSequenceNumber());
     }
 

@@ -17,18 +17,19 @@ public class TCPServer extends NotificationBroadcasterSupport implements TCPServ
         this.server = new ExperimentalTCPServer(port, new NotificationHandler());
     }
 
-    private class NotificationHandler implements ExceptionListener, Serializable /*, a completer */
+    private class NotificationHandler implements ExceptionListener, Serializable
     {
         public void onException(Throwable cause)
         {
             TCPServer.this.sequenceNumber++;
+
             // envoi d'une notification, aux abonnes
             // a completer
             sendNotification(
-                    new Notification("TCPServer.onException",
-                            this,
-                            sequenceNumber,
-                            "" + cause
+                    new Notification("TCPServer.failure",
+                            TCPServer.this,
+                            TCPServer.this.sequenceNumber,
+                            TCPServer.this.getPort()
                     )
             );
         }
